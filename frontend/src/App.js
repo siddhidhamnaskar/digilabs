@@ -25,13 +25,14 @@ function App() {
             </div>
             <div className="stepper">
               <div className="cta">
+              <div> 
                <div>
-                <div>
+                <div style={{borderColor:" #437EF7"}}>
                   <img src={account}></img>
                 
-                </div>
+                </div >
                 <hr className="hr"></hr>
-                <p>Account</p>
+                <p style={{color: " #437EF7"}}>Account</p>
                 </div>
                 
                 <div>
@@ -40,7 +41,7 @@ function App() {
                  
                 </div>
                 <hr className="hr"></hr>
-                <p>Personal</p>
+                <p style={{color: "#5F6D7E"}}>Personal</p>
                 </div>
 
                <div>
@@ -49,7 +50,7 @@ function App() {
                  
                 </div>
                 <hr className="hr"></hr>
-                <p>Billing</p>
+                <p style={{color: "#5F6D7E"}}>Billing</p>
                </div>
 
               <div>
@@ -57,49 +58,49 @@ function App() {
                   <img src={like}></img>
                   
                 </div>
-                <p>Done</p>
+                <p style={{color: "#5F6D7E"}}>Done</p>
 
               </div>
-                
+              </div> 
               </div>
              
               <div className="inputs">
                <div>
                <div>
-                  <p>Name</p>
-                  <input type="text" /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <p className="Header">Name</p>
+                  <input type="text" value="Bryan Koelpin" /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
                 
                 </div>
                 <div>
-                  <p>Email*</p>
-                  <input  type="Email" /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
-                  <p>Please input a real Email Address</p>
+                  <p className="Header">Email*</p>
+                  <input  type="Email" placeholder='Email Address' /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <p className='inst'>Please input a real Email Address</p>
                 </div>
                 <div className='password'>
                 <div>
-                  <p>Password*</p>
-                  <input type="password" id="fullWidth"  /> <InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
-                  <p>Please Enter Your Password</p>
+                  <p className="Header">Password*</p>
+                  <input type="password" id="fullWidth" placeholder='Password' /> <InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <p className='inst'>Please Enter Your Password</p>
                 </div>
                 <div >
-                  <p>Confirm Password*</p>
-                  <input type='password' id="fullWidth"  /> <InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
-                  <p>Password need to match</p>
+                  <p className="Header">Confirm Password*</p>
+                  <input type='password' id="fullWidth" placeholder='Confirm Password' /> <InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <p className='inst'>Password need to match</p>
                 </div>
 
                 </div>
 
-                <div className='accept'>
-                   <Checkbox/>
+                <div className='accept' >
+                   <Checkbox sx={{theme:"light"}} checked/>
                
-                  <p>I accept the Terms and Privacy Policy</p>
+                  <p className='Header'>I accept the Terms and Privacy Policy</p>
                 </div>
                  
                  
                  </div>
               </div>
               <div className='footer'>
-              <Button variant="contained" style={{textTransform:"none", fontSize:"15px", fontWeight:"600",marginBottom:"20px"}} endIcon={<ArrowForwardIosIcon sx={{fontSize:"2px"}} />}> Next  </Button>
+              <Button variant="contained" style={{textTransform:"none", fontSize:"15px", fontWeight:"600",marginBottom:"20px",marginRight:"50px"}} endIcon={<ArrowForwardIosIcon sx={{fontSize:"2px"}} />}> Next  </Button>
               </div>
 
 

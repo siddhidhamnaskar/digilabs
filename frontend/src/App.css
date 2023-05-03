@@ -69,19 +69,20 @@ background: #FAFBFC;
   
 }
 
-.cta{
-  width: 100%;
+.cta>div{
+  width: 90%;
+  margin: auto;
   height:80px;
   background: #FAFBFC;
   display: flex;
  align-items: center;
  align-content: center;
 
-  justify-content: space-around;
+  justify-content: space-between;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
-.cta>div{
+.cta>div>div{
   width: 10%;
  
   margin-top:30px;
@@ -91,7 +92,7 @@ background: #FAFBFC;
   
 }
 
-.cta>div>div{
+.cta>div>div>div{
   width: 32px;
   height: 32px;
   display: flex;
@@ -114,10 +115,10 @@ font-weight: 600;
 font-size: 14px;
 line-height: 20px;
 letter-spacing: -0.1px;
-color: #5F6D7E;
+
 
 }
-.cta>div>div>img{
+.cta>div>div>div>img{
  
  fill: #5F6D7E;
  color: black;
@@ -125,14 +126,14 @@ color: #5F6D7E;
  
 }
 .hr{
- width: 127px;
+ width: 135px;
  border-top: 2px dotted #DAE0E6;
 border-bottom:0px dotted #DAE0E6;
- 
+letter-spacing: 10px;
 
  position:absolute;
 
-margin-left: 50px;
+margin-left: 47px;
 margin-top: -20px;
  align-self: self-end;
 
@@ -148,12 +149,13 @@ margin-top: -20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 48px 0px 48px;
+  padding: 0px 48px;
   gap: 10px;
   
   width: 648px;
-  height: 474px;
-  
+  height: 374px;
+  padding-top: 32px;
+  padding-bottom: 32px;
   flex: none;
 order: 1;
 align-self: stretch;
@@ -165,6 +167,7 @@ flex-grow: 0;
 }
 .inputs>div input{
   box-sizing: border-box;
+  margin-top: -10px;
 
 /* Auto layout */
 
@@ -202,6 +205,8 @@ flex-grow: 0;
   display: flex;
 justify-content: space-between;
 gap: 23px;
+margin-top: -20px;
+margin-bottom: 10px;
 
 }
 .password>div>input{
@@ -210,8 +215,12 @@ gap: 23px;
 
 .accept{
   display: flex;
-  margin-top: 30px;
+  margin-top:-5px;
+  margin-left: -11px;
  
+}
+.accept>input{
+  border: 1.67px solid #FFFFFF;
 }
 .footer{
   width: 100%;
@@ -222,4 +231,61 @@ gap: 23px;
   justify-content: end;
 
 
+}
+
+.Header{
+  
+height: 20px;
+
+/* Text S/Medium */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.1px;
+
+/* Gray/700 */
+
+color: #272D37;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0
+}
+
+.inst{
+  
+height: 20px;
+
+/* Text S/Regular */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 10px;
+
+/* identical to box height, or 143% */
+
+letter-spacing: 0.3px;
+
+/* Gray/50 */
+
+color: #5F6D7E;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
 }
