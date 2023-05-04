@@ -7,8 +7,7 @@ import * as React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Checkbox from '@mui/material/Checkbox';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+
 import Button from '@mui/material/Button';
 import './App.css';
 
@@ -25,14 +24,14 @@ function App() {
             </div>
             <div className="stepper">
               <div className="cta">
-              <div> 
-               <div>
-                <div style={{borderColor:" #437EF7"}}>
+               <div> 
+                <div>
+                 <div style={{borderColor:" #437EF7"}}>
                   <img src={account}></img>
                 
-                </div >
-                <hr className="hr"></hr>
-                <p style={{color: " #437EF7"}}>Account</p>
+                 </div >
+                   <hr className="hr"></hr>
+                   <p style={{color: " #437EF7"}}>Account</p>
                 </div>
                 
                 <div>
@@ -79,12 +78,12 @@ function App() {
                 <div className='password'>
                 <div>
                   <p className="Header">Password*</p>
-                  <input type="password" id="fullWidth" placeholder='Password' /> <InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <input type="password" placeholder='Password'  /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
                   <p className='inst'>Please Enter Your Password</p>
                 </div>
                 <div >
                   <p className="Header">Confirm Password*</p>
-                  <input type='password' id="fullWidth" placeholder='Confirm Password' /> <InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <input type="password" placeholder='Confirm Password' /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
                   <p className='inst'>Password need to match</p>
                 </div>
 
@@ -100,7 +99,7 @@ function App() {
                  </div>
               </div>
               <div className='footer'>
-              <Button variant="contained" style={{textTransform:"none", fontSize:"15px", fontWeight:"600",marginBottom:"20px",marginRight:"50px"}} endIcon={<ArrowForwardIosIcon sx={{fontSize:"2px"}} />}> Next  </Button>
+              <Button className='button' variant="contained" style={{textTransform:"none", fontSize:"15px", fontWeight:"600",marginBottom:"20px",marginRight:"50px"}} endIcon={<ArrowForwardIosIcon sx={{fontSize:"2px"}} />}> Next  </Button>
               </div>
 
 

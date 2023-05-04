@@ -20,6 +20,7 @@ padding: 0px;
 width: 100%;
 position: relative;
 background: #FAFBFC;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
  
 }
@@ -87,8 +88,7 @@ background: #FAFBFC;
  
   margin-top:30px;
   margin-bottom: -20px;
-  /* margin-left: 20px; */
- 
+  
   
 }
 
@@ -107,7 +107,7 @@ background: #FAFBFC;
  
 }
 .cta p{
-  /* margin: auto; */
+ 
   text-align: center;
   font-family: 'Inter';
 font-style: normal;
@@ -115,6 +115,7 @@ font-weight: 600;
 font-size: 14px;
 line-height: 20px;
 letter-spacing: -0.1px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 
 }
@@ -151,7 +152,8 @@ margin-top: -20px;
   align-items: flex-start;
   padding: 0px 48px;
   gap: 10px;
-  
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
   width: 648px;
   height: 374px;
   padding-top: 32px;
@@ -204,7 +206,7 @@ flex-grow: 0;
   height: 102px;
   display: flex;
 justify-content: space-between;
-gap: 23px;
+gap: 26px;
 margin-top: -20px;
 margin-bottom: 10px;
 
@@ -222,10 +224,15 @@ margin-bottom: 10px;
 .accept>input{
   border: 1.67px solid #FFFFFF;
 }
+.accept p{
+  font-size: 16px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
 .footer{
   width: 100%;
   height: 100%;
-  /* height: 78px; */
+ 
   display: flex;
   align-items: center;
   justify-content: end;
@@ -236,24 +243,14 @@ margin-bottom: 10px;
 .Header{
   
 height: 20px;
-
-/* Text S/Medium */
-
 font-family: 'Inter';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
 line-height: 20px;
-/* identical to box height, or 143% */
-
 letter-spacing: 0.1px;
-
-/* Gray/700 */
-
 color: #272D37;
-
-
-/* Inside auto layout */
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 flex: none;
 order: 0;
@@ -264,28 +261,100 @@ flex-grow: 0
 .inst{
   
 height: 20px;
-
-/* Text S/Regular */
-
 font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 10px;
 
-/* identical to box height, or 143% */
+
+
+
 
 letter-spacing: 0.3px;
 
-/* Gray/50 */
 
 color: #5F6D7E;
 
 
-/* Inside auto layout */
+
 
 flex: none;
 order: 2;
 align-self: stretch;
 flex-grow: 0;
+}
+
+
+@media screen and (max-width:1044px){
+  .header{
+    display: none;
+  }
+  .container{
+    margin: auto;
+  }
+
+}
+
+@media screen and (max-width:375px){
+  .header{
+    display: none;
+  }
+  .container{
+    width: 343px;
+    height: 774px;
+    margin: auto;
+  }
+  .hr{
+    width: 53px;
+    margin-left: 35px;
+  }
+  .inputs>div{
+    width: 100%;
+    margin: auto;
+    
+
+  }
+  .inputs>div input{
+    width: 295px
+  }
+  .password{
+    width: 295px;
+    flex-direction: column;
+    gap:0;
+  }
+  .password>div:nth-child(2){
+    margin-top: -20px;
+  }
+  .password>div{
+    width: 100%;
+  }
+  .password>div>input{
+    width: 100%;
+  }
+  .inputs{
+    height: 492px;
+  }
+  .inputs>div{
+    width: 95%;
+    height: 100%;
+    padding: 0px 24px;
+    padding-bottom: 32px;
+    gap: 5px;
+  }
+  .accept{
+    margin-top: 110px;
+    
+  }
+  .footer{
+    padding: 0px 24px;
+  }
+  .button{
+    width: 90%;
+    margin: auto;
+  }
+  .accept p{
+    font-size: 16px;
+  }
+  
 }
