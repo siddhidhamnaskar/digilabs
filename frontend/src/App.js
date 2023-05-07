@@ -7,12 +7,45 @@ import * as React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Checkbox from '@mui/material/Checkbox';
-
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import './App.css';
 
 function App() {
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [password1,setPassword1]=useState("");
+  const [password2,setPassword2]=useState("");
 
+
+
+ const postData=()=>{
+     if(password1===password2)
+     {
+        const Data={
+          name:name,
+          email:email,
+          password:password1
+        }
+        fetch('https://digilab-backend-rgs6.onrender.com/account',{
+          method:"POST",
+          headers:{
+            "Content-type":"application/json"
+          },
+          body:JSON.stringify(Data)
+        })
+        .then((res)=>{
+          setName("");
+          setEmail("");
+          setPassword1("");
+          setPassword2("");
+          alert("Account Created Successfully")
+        })
+     }
+     else{
+      alert("Password need to match")
+     }
+ }
   
 
   return (
@@ -70,23 +103,23 @@ function App() {
                <div>
                <div>
                   <p className="Header">Name</p>
-                  <input type="text" value="Bryan Koelpin" /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <input type="text" value={name} placeholder='Enter Name Here' onChange={(e)=>setName(e.target.value)} /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
                 
                 </div>
                 <div>
                   <p className="Header">Email*</p>
-                  <input  type="Email" placeholder='Email Address' /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <input  type="Email" placeholder='Email Address' value={email} onChange={(e)=>setEmail(e.target.value)} /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
                   <p className='inst'>Please input a real Email Address</p>
                 </div>
                 <div className='password'>
                 <div>
                   <p className="Header">Password*</p>
-                  <input type="password" placeholder='Password'  /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <input type="password" placeholder='Password' value={password1} onChange={(e)=>setPassword1(e.target.value)}  /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
                   <p className='inst'>Please Enter Your Password</p>
                 </div>
                 <div >
                   <p className="Header">Confirm Password*</p>
-                  <input type="password" placeholder='Confirm Password' /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <input type="password" placeholder='Confirm Password' value={password2} onChange={(e)=>setPassword2(e.target.value)} /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
                   <p className='inst'>Password need to match</p>
                 </div>
 
@@ -102,7 +135,7 @@ function App() {
                  </div>
               </div>
               <div className='footer'>
-              <Button className='button' variant="contained" style={{textTransform:"none", fontSize:"15px", fontWeight:"600",marginBottom:"20px",marginRight:"50px"}} endIcon={<ArrowForwardIosIcon sx={{fontSize:"2px"}} />}> Next  </Button>
+              <Button className='button' onClick={postData} variant="contained" style={{textTransform:"none", fontSize:"15px", fontWeight:"600",marginBottom:"20px",marginRight:"50px"}} endIcon={<ArrowForwardIosIcon sx={{fontSize:"2px"}} />}> Next  </Button>
               </div>
 
 
