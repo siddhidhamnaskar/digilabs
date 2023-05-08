@@ -73,17 +73,19 @@ table button:hover{
   }
 }
 
-@media screen and (max-width:300px){
+@media screen and (max-width:469px){
   .App>div{
-    width: 20%;
+    width: 100%;
     margin: auto;
   }
   
   table{
-    width: 100%;
+    width: 50%;
     margin: auto;
+    font-size: 13px;
   }
   table th,td{
-    padding: 5px;
+    border: 1px solid black;
+    padding: 2px;
   }
 }
