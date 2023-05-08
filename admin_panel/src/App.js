@@ -4,10 +4,11 @@ import {useState,useEffect} from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Button from '@mui/material/Button';
+import LinearIndeterminate from "./Component/progress";
 
 function App() {
   const [data,setData]=useState([]);
- 
+  const [load,setLoad]=useState(true);
   const [json, setJson]=useState()
 
   useEffect(()=>{
@@ -18,6 +19,7 @@ function App() {
     .then((json)=>{
       console.log(json);
        setData(json);
+       setLoad(false)
     })
 
   },[json])
@@ -25,6 +27,7 @@ function App() {
   
 
   const deleteData=(id)=>{
+    setLoad(true)
       fetch(`https://digilab-backend-rgs6.onrender.com/${id}`,{
         method:"DELETE",
         headers:{
@@ -32,9 +35,12 @@ function App() {
         }
       })
       .then((res)=>{
+       
         return res.json();
       })
       .then((json)=>{
+      
+        setLoad(false)
         setJson(json)
        
       })
@@ -57,7 +63,9 @@ function App() {
 
 
   return (
+   
     <div className="App">
+     { load ? <LinearIndeterminate/>:null}
       <div>
          <img className="lookscout" src={logo}></img>
       <table>
