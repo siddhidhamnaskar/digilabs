@@ -4,6 +4,9 @@ const dotenv =require('dotenv');
 const User=require('./models/user');
 const bcrypt=require('bcryptjs')
 const connection=require('./Config/db')
+const multer=require('multer');
+const uploadMiddelwares=multer({dest:'uploads/'})
+const Logos =require('./models/logo')
 dotenv.config();
 const PORT=process.env.PORT
 const app=express();
@@ -50,6 +53,35 @@ app.delete('/:id',async(req,res)=>{
     }
     catch(err){
         res.status(404).json(err);
+    }
+})
+
+app.post('/post',uploadMiddelwares.single('file'),async(req,res)=>{
+    try{
+        const {originalname,path}=req.file;
+        const parts=originalname.split('.');
+        const ext=parts[parts.length-1];
+        const newPath=path+"."+ext;
+        fs.renameSync(path,newPath);
+        Logos.Cover=newPath;
+
+         
+    }
+    catch(err){
+        res.status(505).json(err);
+    }
+
+})
+
+app.get('/logo',async(req,res)=>{
+    try{
+        const logos=await Logos.find();
+        res.status(200).json(logos);
+
+    }
+    catch(err){
+        res.status(404).json(err);
+
     }
 })
 
