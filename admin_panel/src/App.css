@@ -48,3 +48,42 @@ table button:hover{
   margin-top: 50px;
 }
 
+
+@media screen and (max-width:1300px){
+  .App>div{
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width:600px){
+  .App{
+    align-items: center;
+  }
+  .App>div{
+    width: 100%;
+    margin: auto;
+  }
+  table{
+    width: 80%;
+    margin: auto;
+  }
+  table th,td{
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width:300px){
+  .App>div{
+    width: 20%;
+    margin: auto;
+  }
+  
+  table{
+    width: 100%;
+    margin: auto;
+  }
+  table th,td{
+    padding: 5px;
+  }
+}
