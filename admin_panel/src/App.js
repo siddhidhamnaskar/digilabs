@@ -7,8 +7,8 @@ import Button from '@mui/material/Button';
 
 function App() {
   const [data,setData]=useState([]);
-  const [disable1,setDisable1]=useState(true)
-  const [disable2,setDisable2]=useState(true)
+ 
+  const [json, setJson]=useState()
 
   useEffect(()=>{
     fetch("https://digilab-backend-rgs6.onrender.com/")
@@ -20,23 +20,29 @@ function App() {
        setData(json);
     })
 
-  },[])
+  },[json])
 
-  const prevData=()=>{
+  
 
-  }
-
-  const nextData=()=>{
-
-  }
-
-  const deleteData=(index)=>{
+  const deleteData=(id)=>{
+      fetch(`https://digilab-backend-rgs6.onrender.com/${id}`,{
+        method:"DELETE",
+        headers:{
+          "Content-type":"application/json"
+        }
+      })
+      .then((res)=>{
+        return res.json();
+      })
+      .then((json)=>{
+        setJson(json)
+       
+      })
       
-    const Data=data.filter((elem,i)=>{
-      return i!==index;
-    })
+      
+  
 
-    setData(Data);
+    
   }
 
   const buttonStyle={
@@ -74,12 +80,6 @@ function App() {
         }
       
       </table>
-      <div className="buttons" >
-       <button disabled>Prev</button>
-       <button >Next</button>
-     
-      </div>
-       
       </div>
     </div>
   );

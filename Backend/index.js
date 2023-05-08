@@ -44,7 +44,7 @@ app.get('/',async(req,res)=>{
 
 app.delete('/:id',async(req,res)=>{
     try{
-
+        console.log(req.params);
         const Data=await User.findByIdAndDelete(req.params.id);
         res.status(200).json(Data);
     }

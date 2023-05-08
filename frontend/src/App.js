@@ -114,12 +114,12 @@ function App() {
                 <div className='password'>
                 <div>
                   <p className="Header">Password*</p>
-                  <input type="password" placeholder='Password' value={password1} onChange={(e)=>setPassword1(e.target.value)}  /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <input type="password" placeholder='Password' value={password1} onChange={(e)=>setPassword1(e.target.value)}  />
                   <p className='inst'>Please Enter Your Password</p>
                 </div>
                 <div >
                   <p className="Header">Confirm Password*</p>
-                  <input type="password" placeholder='Confirm Password' value={password2} onChange={(e)=>setPassword2(e.target.value)} /><InfoOutlinedIcon sx={{marginLeft:"-35px",marginBottom:"-10px",color:"#5F6D7E"}}/>
+                  <input type="password" placeholder='Confirm Password' value={password2} onChange={(e)=>setPassword2(e.target.value)} />
                   <p className='inst'>Password need to match</p>
                 </div>
 
