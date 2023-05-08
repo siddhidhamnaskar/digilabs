@@ -63,7 +63,11 @@ app.post('/post',uploadMiddelwares.single('file'),async(req,res)=>{
         const ext=parts[parts.length-1];
         const newPath=path+"."+ext;
         fs.renameSync(path,newPath);
-        Logos.Cover=newPath;
+        const logo=new Logos({
+            Cover:newPath
+        })
+        const Logo=await logo.save(logo);
+        res.status(200).json(Logo);
 
          
     }

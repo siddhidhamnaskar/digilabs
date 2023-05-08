@@ -10,6 +10,8 @@ function App() {
   const [data,setData]=useState([]);
   const [load,setLoad]=useState(true);
   const [json, setJson]=useState()
+  const [file,setFile]=useState("");
+  const [Cover, setCover]=useState("");
 
   useEffect(()=>{
     fetch("https://digilab-backend-rgs6.onrender.com/")
@@ -17,9 +19,17 @@ function App() {
       return res.json();
     })
     .then((json)=>{
-      console.log(json);
+      // console.log(json);
        setData(json);
        setLoad(false)
+    })
+
+    fetch("https://digilab-backend-rgs6.onrender.com/logo")
+    .then((res)=>{
+      return res.json();
+    })
+    .then((json)=>{
+      console.log(json);
     })
 
   },[json])
@@ -51,21 +61,25 @@ function App() {
     
   }
 
-  const buttonStyle={
-    width: "15%",
-    height: "40px",
-    fontSize: "25px",
-    border: "none",
-    backgroundColor:"#437EF7",
-    color: "white"
+  const updateImage=()=>{
+    fetch('https://digilab-backend-rgs6.onrender.com/post',{
+      method:"POST",
+      headers:{
+        "Content-type":"application/json"
+      },
+      body:file[0]
 
+    })
+      
   }
+
+  
 
 
   return (
    
     <div className="App">
-     { load ? <LinearIndeterminate/>:null}
+     { load ? <LinearIndeterminate/>:<div className="logo_update"><h2>Logo Update</h2><input type="file" onChange={(e)=>setFile(e.target.files)}></input> <button style={{width:"10%",marginTop:"20px",background:"blue",color:"white",cursor:'pointer'}} onClick={updateImage}>Update</button></div>}
       <div>
          <img className="lookscout" src={logo}></img>
       <table>
