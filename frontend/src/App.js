@@ -27,7 +27,7 @@ function App() {
           email:email,
           password:password1
         }
-        fetch('https://digilab-backend-rgs6.onrender.com/account',{
+        fetch('https://digilab-backend-rgs6.onrender.com/',{
           method:"POST",
           headers:{
             "Content-type":"application/json"

@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 
-app.post('/account',async(req,res)=>{
+app.post('/',async(req,res)=>{
     try{
         const salt=await bcrypt.genSalt(8)
         const hashPass=await bcrypt.hash(req.body.password,salt )
@@ -32,10 +32,21 @@ app.post('/account',async(req,res)=>{
 
 })
 
-app.get('/admin',async(req,res)=>{
+app.get('/',async(req,res)=>{
     try{
         const data=await User.find();
         res.status(200).json(data);
+    }
+    catch(err){
+        res.status(404).json(err);
+    }
+})
+
+app.delete('/:id',async(req,res)=>{
+    try{
+
+        const Data=await User.findByIdAndDelete(req.params.id);
+        res.status(200).json(Data);
     }
     catch(err){
         res.status(404).json(err);
