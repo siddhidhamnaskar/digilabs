@@ -8,6 +8,10 @@
   justify-content: center;
   background: #FAFBFC;
 }
+.App img{
+  width: 200px;
+  height: 50px;
+}
 .App>div{
   width: 50%;
   margin:auto ;

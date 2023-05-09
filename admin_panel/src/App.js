@@ -1,20 +1,18 @@
 import logo from "./Media/logo.png"
 import './App.css';
 import {useState,useEffect} from 'react'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import Button from '@mui/material/Button';
+
 import LinearIndeterminate from "./Component/progress";
+import { base_url } from "./Services/API";
 
 function App() {
   const [data,setData]=useState([]);
   const [load,setLoad]=useState(true);
   const [json, setJson]=useState()
   const [file,setFile]=useState("");
-  const [Cover, setCover]=useState("");
-
+  
   useEffect(()=>{
-    fetch("https://digilab-backend-rgs6.onrender.com/")
+    fetch(`${base_url}/`)
     .then((res)=>{
       return res.json();
     })
@@ -24,13 +22,7 @@ function App() {
        setLoad(false)
     })
 
-    fetch("https://digilab-backend-rgs6.onrender.com/logo")
-    .then((res)=>{
-      return res.json();
-    })
-    .then((json)=>{
-      console.log(json);
-    })
+   
 
   },[json])
 
@@ -38,7 +30,7 @@ function App() {
 
   const deleteData=(id)=>{
     setLoad(true)
-      fetch(`https://digilab-backend-rgs6.onrender.com/${id}`,{
+      fetch(`${base_url}/${id}`,{
         method:"DELETE",
         headers:{
           "Content-type":"application/json"
@@ -61,15 +53,22 @@ function App() {
     
   }
 
+  
+
   const updateImage=()=>{
-    fetch('https://digilab-backend-rgs6.onrender.com/post',{
+  console.log(file[0]);
+   const logo=new FormData();
+   logo.set('file',file[0])
+    fetch(`${base_url}/post`,{
       method:"POST",
-      headers:{
-        "Content-type":"application/json"
-      },
-      body:file[0]
+      body:logo,
+      credentials:'include'
 
     })
+    .then((res)=>{
+       res.json().then((json)=>console.log(json))
+    })
+   
       
   }
 
@@ -81,7 +80,7 @@ function App() {
     <div className="App">
      { load ? <LinearIndeterminate/>:<div className="logo_update"><h2>Logo Update</h2><input type="file" onChange={(e)=>setFile(e.target.files)}></input> <button style={{width:"10%",marginTop:"20px",background:"blue",color:"white",cursor:'pointer'}} onClick={updateImage}>Update</button></div>}
       <div>
-         <img className="lookscout" src={logo}></img>
+       
       <table>
         <thead>
            <th>Name</th>

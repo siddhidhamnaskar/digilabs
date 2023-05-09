@@ -10,12 +10,27 @@ import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import './App.css';
+import { useEffect } from 'react';
+import { base_url } from './services/API';
 
 function App() {
   const [name,setName]=useState("");
   const [email,setEmail]=useState("");
   const [password1,setPassword1]=useState("");
   const [password2,setPassword2]=useState("");
+  const [Cover,setCover]=useState("");
+
+
+  useEffect(()=>{
+    fetch(`${base_url}/logo`)
+    .then((res)=>{
+      return res.json();
+    })
+    .then((json)=>{
+      console.log(json[0].Cover);
+      setCover(json[0].Cover)
+    })
+  },[])
   
 
 
@@ -28,7 +43,7 @@ function App() {
           email:email,
           password:password1
         }
-        fetch('https://digilab-backend-rgs6.onrender.com/',{
+        fetch(`${base_url}/`,{
           method:"POST",
           headers:{
             "Content-type":"application/json"
@@ -56,7 +71,7 @@ function App() {
       </div>
         <div className="container">
             <div className="logoBox">
-            <img className="lookscout" src={logo}></img>
+            <img className="lookscout" src={`${base_url}/${Cover}`}></img>
 
             </div>
             <div className="stepper">

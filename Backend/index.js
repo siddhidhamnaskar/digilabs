@@ -9,9 +9,12 @@ const uploadMiddelwares=multer({dest:'uploads/'})
 const Logos =require('./models/logo')
 dotenv.config();
 const PORT=process.env.PORT
+const fs =require('fs');
 const app=express();
-app.use(cors());
+app.use(cors({credentials:true,origin:"*"}));
+//  app.use(cors({credentials:true,origin:""}));
 app.use(express.json());
+app.use('/uploads',express.static(__dirname+'/uploads'));
 
 
 app.post('/',async(req,res)=>{
@@ -58,15 +61,16 @@ app.delete('/:id',async(req,res)=>{
 
 app.post('/post',uploadMiddelwares.single('file'),async(req,res)=>{
     try{
+       console.log(req.file);
         const {originalname,path}=req.file;
-        const parts=originalname.split('.');
-        const ext=parts[parts.length-1];
-        const newPath=path+"."+ext;
-        fs.renameSync(path,newPath);
+    const parts=originalname.split('.');
+    const ext=parts[parts.length-1];
+    const newPath=path+"."+ext;
+    fs.renameSync(path,newPath);
         const logo=new Logos({
             Cover:newPath
         })
-        const Logo=await logo.save(logo);
+        const Logo=await logo.save();
         res.status(200).json(Logo);
 
          
