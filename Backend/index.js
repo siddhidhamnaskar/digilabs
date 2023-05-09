@@ -12,9 +12,7 @@ const PORT=process.env.PORT
 const fs =require('fs');
 const app=express();
  app.use(cors());
-// app.use(cors({credentials:true,origin:"http://localhost:3000"}));
-// app.use(cors({credentials:true,origin:"http://localhost:3001"}));
-//  app.use(cors({credentials:true,origin:""}));
+
 app.use(express.json());
 app.use('/uploads',express.static(__dirname+'/uploads'));
 
