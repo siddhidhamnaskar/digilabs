@@ -61,7 +61,7 @@ app.delete('/:id',async(req,res)=>{
 
 app.post('/post',uploadMiddelwares.single('file'),async(req,res)=>{
     try{
-       console.log(req.file);
+     console.log(req.file);
         const {originalname,path}=req.file;
     const parts=originalname.split('.');
     const ext=parts[parts.length-1];
