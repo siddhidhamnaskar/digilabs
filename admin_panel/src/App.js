@@ -10,6 +10,7 @@ function App() {
   const [load,setLoad]=useState(true);
   const [json, setJson]=useState()
   const [file,setFile]=useState("");
+  const [Cover,setCover]=useState();
   
   useEffect(()=>{
     fetch(`${base_url}/`)
@@ -20,6 +21,14 @@ function App() {
       // console.log(json);
        setData(json);
        setLoad(false)
+    })
+    fetch(`${base_url}/logo`)
+    .then((res)=>{
+      return res.json();
+    })
+    .then((json)=>{
+      console.log(json[0].Cover);
+      setCover(json[0].Cover)
     })
 
    
@@ -53,10 +62,13 @@ function App() {
     
   }
 
+
+  
   
 
-  const updateImage=()=>{
-  console.log(file[0]);
+  const updateImage=(e)=>{
+  // console.log(file[0]);
+  e.preventDefault();
    const logo=new FormData();
    logo.set('file',file[0])
     fetch(`${base_url}/post`,{
@@ -66,7 +78,11 @@ function App() {
 
     })
     .then((res)=>{
-       res.json().then((json)=>console.log(json))
+      return res.json();
+    })
+    .then((json)=>{
+      setJson("")
+      alert("Updated Successfully")
     })
    
       
@@ -80,7 +96,7 @@ function App() {
     <div className="App">
      { load ? <LinearIndeterminate/>:<div className="logo_update"><h2>Logo Update</h2><input type="file" onChange={(e)=>setFile(e.target.files)}></input> <button style={{width:"10%",marginTop:"20px",background:"blue",color:"white",cursor:'pointer'}} onClick={updateImage}>Update</button></div>}
       <div>
-       
+        <img src={`${base_url}/${Cover}`}></img>
       <table>
         <thead>
            <th>Name</th>
