@@ -84,7 +84,7 @@ app.post('/post',uploadMiddelwares.single('file'),async(req,res)=>{
 
 app.get('/logo',async(req,res)=>{
     try{
-        const logos=await Logos.find().sort({createdAt:-1});
+        const logos=await Logos.find();
         res.status(200).json(logos);
 
     }
