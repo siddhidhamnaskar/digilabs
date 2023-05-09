@@ -78,12 +78,15 @@ function App() {
 
     })
     .then((res)=>{
-      return res.json();
+      
+        alert("Updated Successfully")
     })
-    .then((json)=>{
+    .catch((err)=>{
       setJson("")
+      console.log("Error");
       alert("Updated Successfully")
     })
+  
    
       
   }

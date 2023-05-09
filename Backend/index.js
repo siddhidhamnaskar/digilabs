@@ -66,7 +66,8 @@ app.post('/post',uploadMiddelwares.single('file'),async(req,res)=>{
     const parts=originalname.split('.');
     const ext=parts[parts.length-1];
     const newPath=path+"."+ext;
-    fs.rename(path,newPath);
+    fs.renameSync(path,newPath);
+       const data=await Logos.deleteMany();
         const logo=new Logos({
             Cover:newPath
         })
