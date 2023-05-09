@@ -74,18 +74,14 @@ function App() {
     fetch(`${base_url}/post`,{
       method:"POST",
       body:logo,
-      credentials:'include'
+     
 
     })
     .then((res)=>{
-      
+      setJson("")
         alert("Updated Successfully")
     })
-    .catch((err)=>{
-      setJson("")
-      console.log("Error");
-      alert("Updated Successfully")
-    })
+    
   
    
       
