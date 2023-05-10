@@ -98,7 +98,7 @@ app.get('/logo',async(req,res)=>{
 
 app.post('/text',async(req,res)=>{
     try{
-        Texts.deleteMany();
+       await Texts.deleteMany();
         console.log(req.body);
         const newText=new Texts({
             text:req.body.text
