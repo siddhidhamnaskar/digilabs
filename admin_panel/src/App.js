@@ -5,12 +5,14 @@ import {useState,useEffect} from 'react'
 import LinearIndeterminate from "./Component/progress";
 import { base_url } from "./Services/API";
 
+
 function App() {
   const [data,setData]=useState([]);
   const [load,setLoad]=useState(true);
   const [json, setJson]=useState()
   const [file,setFile]=useState("");
   const [Cover,setCover]=useState();
+  const [text,setText]=useState("");
   
   useEffect(()=>{
     fetch(`${base_url}/`)
@@ -27,7 +29,7 @@ function App() {
       return res.json();
     })
     .then((json)=>{
-      console.log(json[0].Cover);
+      // console.log(json[0].Cover);
       setCover(json[0].Cover)
     })
 
@@ -87,13 +89,56 @@ function App() {
       
   }
 
-  
+  const updateText=()=>{
+    const textData={
+      text:text
+    }
+
+    fetch(`${base_url}/text`,{
+      method:"POST",
+      headers:{
+        "Content-type":"application/json"
+      },
+      body:JSON.stringify(textData)
+    })
+    .then((res)=>{
+      return res.json();
+    })
+    .then((json)=>{
+      console.log(json);
+      alert("Updated Successfully")
+    })
+
+  }
+
+  const buttonStyle={
+    width:"30%",
+    marginTop:"20px",
+    background:"blue",
+    color:"white",
+    cursor:'pointer'
+
+  }
 
 
   return (
    
     <div className="App">
-     { load ? <LinearIndeterminate/>:<div className="logo_update"><h2>Logo Update</h2><input type="file" onChange={(e)=>setFile(e.target.files)}></input> <button style={{width:"10%",marginTop:"20px",background:"blue",color:"white",cursor:'pointer'}} onClick={updateImage}>Update</button></div>}
+     { load ? <LinearIndeterminate/>:
+            <div className="logo_update"> 
+            <div>
+            <h2>Logo Update</h2>
+            <input type="file" onChange={(e)=>setFile(e.target.files)}></input> 
+            <button style={buttonStyle} onClick={updateImage}>Update</button>
+            </div>
+               <div>
+               <h2>Button Text Update</h2>
+               <input type="text" onChange={(e)=>setText(e.target.value)}></input>
+               <button style={buttonStyle} onClick={updateText}>Update</button>
+                </div>
+              </div>
+
+     }
       <div>
         <img src={`${base_url}/${Cover}`}></img>
       <table>

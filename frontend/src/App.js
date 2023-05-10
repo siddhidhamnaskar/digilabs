@@ -19,6 +19,7 @@ function App() {
   const [password1,setPassword1]=useState("");
   const [password2,setPassword2]=useState("");
   const [Cover,setCover]=useState("");
+  const [text,setText]=useState("");
 
 
   useEffect(()=>{
@@ -29,6 +30,15 @@ function App() {
     .then((json)=>{
       console.log(json[0].Cover);
       setCover(json[0].Cover)
+    })
+
+    fetch(`${base_url}/text`)
+    .then((res)=>{
+      return res.json();
+    })
+    .then((json)=>{
+      console.log(json);
+      setText(json[0].text);
     })
   },[])
   
@@ -151,7 +161,7 @@ function App() {
                  </div>
               </div>
               <div className='footer'>
-              <Button className='button' onClick={postData} variant="contained" style={{textTransform:"none", fontSize:"15px", fontWeight:"600",marginBottom:"20px",marginRight:"50px"}} endIcon={<ArrowForwardIosIcon sx={{fontSize:"2px"}} />}> Next  </Button>
+              <Button className='button' onClick={postData} variant="contained" style={{textTransform:"none", fontSize:"15px", fontWeight:"600",marginBottom:"20px",marginRight:"50px"}} endIcon={<ArrowForwardIosIcon sx={{fontSize:"2px"}} />}> {text}  </Button>
               </div>
 
 

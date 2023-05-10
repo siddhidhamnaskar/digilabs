@@ -52,10 +52,16 @@ table button:hover{
   margin-top: 50px;
 }
 .logo_update{
+  width: 100%;
   margin: auto;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo_update>div{
+  display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 @media screen and (max-width:1300px){

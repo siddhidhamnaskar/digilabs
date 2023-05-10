@@ -7,6 +7,7 @@ const connection=require('./Config/db')
 const multer=require('multer');
 const uploadMiddelwares=multer({dest:'uploads/'})
 const Logos =require('./models/logo')
+const Texts=require('./models/buttonText')
 dotenv.config();
 const PORT=process.env.PORT
 const fs =require('fs');
@@ -91,6 +92,36 @@ app.get('/logo',async(req,res)=>{
     catch(err){
         res.status(404).json(err);
 
+    }
+})
+
+
+app.post('/text',async(req,res)=>{
+    try{
+        Texts.deleteMany();
+        console.log(req.body);
+        const newText=new Texts({
+            text:req.body.text
+        })
+        const text=await newText.save();
+        res.status(200).json(text)
+
+    }
+    catch(err){
+      
+        res.status(500).json(err);
+
+    }
+
+})
+
+app.get('/text',async(req,res)=>{
+    try{
+        const textData= await Texts.find();
+        res.status(200).json(textData);
+    }
+    catch(err){
+        res.status(404).json(err);
     }
 })
 
