@@ -1,4 +1,4 @@
-import logo from "./Media/logo.png"
+// import logo from "./Media/logo.png"
 import './App.css';
 import {useState,useEffect} from 'react'
 
@@ -140,7 +140,7 @@ function App() {
 
      }
       <div>
-        <img src={`${base_url}/${Cover}`}></img>
+        <img src={`${base_url}/${Cover}`} alt=""/>
       <table>
         <thead>
            <th>Name</th>

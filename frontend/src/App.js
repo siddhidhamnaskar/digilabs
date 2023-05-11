@@ -1,4 +1,4 @@
-import logo from './Files/logo.png';
+// import logo from './Files/logo.png';
 import account from './Files/account.png'
 import billing from './Files/billing.png'
 import user from './Files/user.png'
@@ -81,7 +81,7 @@ function App() {
       </div>
         <div className="container">
             <div className="logoBox">
-            <img className="lookscout" src={`${base_url}/${Cover}`}></img>
+            <img className="lookscout" src={`${base_url}/${Cover}`}/>
 
             </div>
             <div className="stepper">
