@@ -5,7 +5,7 @@ const User=require('./models/user');
 const bcrypt=require('bcryptjs')
 const connection=require('./Config/db')
 const multer=require('multer');
-const uploadMiddelwares=multer({dest:'uploads/'})
+  const uploadMiddelwares=multer({dest:'uploads/'})
 const Logos =require('./models/logo')
 const Texts=require('./models/buttonText')
 dotenv.config();
@@ -15,7 +15,7 @@ const app=express();
  app.use(cors());
 
 app.use(express.json());
-app.use('/uploads',express.static(__dirname+'/uploads'));
+ app.use('/uploads',express.static(__dirname+'/uploads'));
 
 
 app.post('/',async(req,res)=>{
@@ -60,21 +60,10 @@ app.delete('/:id',async(req,res)=>{
     }
 })
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, '/tmp/my-uploads')
-    },
-    filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.fieldname + '-' + uniqueSuffix)
-    }
-  })
-  
-  const upload = multer({ storage: storage })
-  
+
   
 
-app.post('/post',upload.single('file'),async(req,res)=>{
+app.post('/post',uploadMiddelwares.single('file'),async(req,res)=>{
     try{
      console.log(req.file);
         const {originalname,path}=req.file;

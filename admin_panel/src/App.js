@@ -20,7 +20,7 @@ function App() {
       return res.json();
     })
     .then((json)=>{
-      // console.log(json);
+      console.log(json);
        setData(json);
        setLoad(false)
     })
@@ -140,7 +140,7 @@ function App() {
 
      }
       <div>
-        <img src={`${base_url}/${Cover}`} alt=""/>
+        <img src={`${base_url}/${Cover}`} ></img>
       <table>
         <thead>
            <th>Name</th>
