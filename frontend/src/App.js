@@ -85,7 +85,7 @@ function App() {
         const base64String = btoa(new Uint8Array(singleData.img.data.data).reduce(function (data, byte) {
           return data + String.fromCharCode(byte);
       }, ''));
-        return <img src={`data:image/png;base64,${base64String}`} width="300"/>
+        return <img className='lookscout' src={`data:image/png;base64,${base64String}`} width="300"/>
       })}
 
             </div>

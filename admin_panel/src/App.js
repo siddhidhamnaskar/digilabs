@@ -7,11 +7,11 @@ import { base_url } from "./Services/API";
 
 
 function App() {
-  const [data,setData]=useState([]);
+  const [inputs,setInputs]=useState([]);
   const [load,setLoad]=useState(true);
   const [json, setJson]=useState()
   const [file,setFile]=useState("");
-  const [Cover,setCover]=useState([]);
+  const [data,setData]=useState([]);
   const [text,setText]=useState("");
   
   useEffect(()=>{
@@ -20,8 +20,8 @@ function App() {
       return res.json();
     })
     .then((json)=>{
-      console.log(json);
-       setData(json);
+      // console.log(json);
+       setInputs(json);
        setLoad(false)
     })
     fetch(`${base_url}/logo`)
@@ -29,8 +29,8 @@ function App() {
       return res.json();
     })
     .then((json)=>{
-      // console.log(json[0].Cover);
-      setCover(json)
+      console.log(json);
+      setData(json)
     })
 
    
@@ -140,7 +140,7 @@ function App() {
 
      }
       <div>
-      {Cover.map((singleData) => {
+      {data.map((singleData) => {
         const base64String = btoa(new Uint8Array(singleData.img.data.data).reduce(function (data, byte) {
           return data + String.fromCharCode(byte);
       }, ''));
@@ -154,7 +154,7 @@ function App() {
            <th>Delete</th>
         </thead>
         {
-          data.map((elem,i)=>{
+          inputs.map((elem,i)=>{
            return <tbody>
             <tr>
               <td>{elem.Name}</td>
