@@ -72,7 +72,7 @@ const storage = multer.diskStorage({
 
   
 
-app.post('/post',upload('file'),async(req,res)=>{
+app.post('/post',upload.single('file'),async(req,res)=>{
     try{
     
       
