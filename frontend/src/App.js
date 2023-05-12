@@ -18,7 +18,7 @@ function App() {
   const [email,setEmail]=useState("");
   const [password1,setPassword1]=useState("");
   const [password2,setPassword2]=useState("");
-  const [Cover,setCover]=useState("");
+  const [Cover,setCover]=useState([]);
   const [text,setText]=useState("");
 
 
@@ -29,7 +29,7 @@ function App() {
     })
     .then((json)=>{
       console.log(json[0].Cover);
-      setCover(json[0].Cover)
+      setCover(json)
     })
 
     fetch(`${base_url}/text`)
@@ -81,7 +81,12 @@ function App() {
       </div>
         <div className="container">
             <div className="logoBox">
-            <img className="lookscout" src={`${base_url}/${Cover}`}/>
+            {Cover.map((singleData) => {
+        const base64String = btoa(new Uint8Array(singleData.img.data.data).reduce(function (data, byte) {
+          return data + String.fromCharCode(byte);
+      }, ''));
+        return <img src={`data:image/png;base64,${base64String}`} width="300"/>
+      })}
 
             </div>
             <div className="stepper">

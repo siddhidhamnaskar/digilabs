@@ -1,7 +1,10 @@
 const mongoose=require('mongoose');
 
 const logoSchema=new mongoose.Schema({
-    Cover:{type:"String",required:true},
+    img:{
+        data:Buffer,
+        ContentType:String
+    }
     
 }
 )

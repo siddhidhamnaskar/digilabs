@@ -11,7 +11,7 @@ function App() {
   const [load,setLoad]=useState(true);
   const [json, setJson]=useState()
   const [file,setFile]=useState("");
-  const [Cover,setCover]=useState();
+  const [Cover,setCover]=useState([]);
   const [text,setText]=useState("");
   
   useEffect(()=>{
@@ -30,7 +30,7 @@ function App() {
     })
     .then((json)=>{
       // console.log(json[0].Cover);
-      setCover(json[0].Cover)
+      setCover(json)
     })
 
    
@@ -140,7 +140,13 @@ function App() {
 
      }
       <div>
-        <img src={`${base_url}/${Cover}`} ></img>
+      {Cover.map((singleData) => {
+        const base64String = btoa(new Uint8Array(singleData.img.data.data).reduce(function (data, byte) {
+          return data + String.fromCharCode(byte);
+      }, ''));
+        return <img src={`data:image/png;base64,${base64String}`} width="300"/>
+      })}
+    
       <table>
         <thead>
            <th>Name</th>

@@ -5,7 +5,7 @@ const User=require('./models/user');
 const bcrypt=require('bcryptjs')
 const connection=require('./Config/db')
 const multer=require('multer');
-  const uploadMiddelwares=multer({dest:'uploads/'})
+  
 const Logos =require('./models/logo')
 const Texts=require('./models/buttonText')
 dotenv.config();
@@ -15,8 +15,7 @@ const app=express();
  app.use(cors());
 
 app.use(express.json());
- app.use('/uploads',express.static(__dirname+'/uploads'));
-
+ 
 
 app.post('/',async(req,res)=>{
     try{
@@ -60,20 +59,29 @@ app.delete('/:id',async(req,res)=>{
     }
 })
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "uploads");
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.originalname);
+    },
+  });
+  
+  const upload = multer({ storage: storage });
 
   
 
-app.post('/post',uploadMiddelwares.single('file'),async(req,res)=>{
+app.post('/post',upload('file'),async(req,res)=>{
     try{
-     console.log(req.file);
-        const {originalname,path}=req.file;
-    const parts=originalname.split('.');
-    const ext=parts[parts.length-1];
-    const newPath=path+"."+ext;
-    fs.renameSync(path,newPath);
+    
+      
        const data=await Logos.deleteMany();
         const logo=new Logos({
-            Cover:newPath
+            img: {
+                data: fs.readFileSync("uploads/" + req.file.filename),
+                contentType: "image/png",
+            }
         })
         const Logo=await logo.save();
         res.status(200).json(Logo);
